@@ -1,0 +1,176 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+
+\begin{document}
+
+
+\title{A First Course in Abstract Algebra by Fraleigh 7th Edition (Notes Part III)}
+\author{Hubert Farnsworth }  
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+ 
+
+ 
+\section{Part III : Homomorphisms and Factor Groups}
+
+
+\subsection{Homomorphisms}
+
+\noindent \underline{\bf 13.1 Definition} A map $\phi : G \rightarrow G'$, where $G$ and $G'$ are groups, is called a {\bf homomorphism} if $$ \phi(ab) = \phi(a)\phi(b)$$ for all $a,b \in G$.\\
+
+\noindent \underline{\bf 13.11 Definition} Let $\phi : X \rightarrow Y$, and let $A \subseteq X, B \subseteq Y$. The {\bf image $\phi[A]$ of $A$ in $Y$ under $\phi$} is $\{\phi(a) \; | \; a \in A\}$. The set $\phi[X]$ is the {\bf range range of $\phi$}. The {\bf inverse image $\phi^{-1}[B]$ of $B$ in $X$} is $\{x \in X \; | \; \phi(x) \in B\}$. \\
+
+\noindent \underline{\bf 13.12 Theorem} Let $\phi$ be a homomorphism of a group $G$ into a group $G'$.\\
+
+1. If $e$ is the identity element in $G$, then $\phi(e) =e'$, where $e'$ is the identity element in $G'$. \\
+
+2. If $a \in G$, then $\phi(a^{-1}) = \phi(a)^{-1}$. \\
+
+3. If $H \leq G$, then $\phi[H] \leq G'$. \\
+
+4. If $K' \leq G'$, then $\phi^{-1}[K'] \leq G$. \\
+
+\noindent \underline{\bf 13.13 Definition} Let $\phi : G \rightarrow G'$ be a homomorphism of groups. The subgroup $\phi^{-1}[{e'}] = \{x \in G \; | \; \phi(x) = e'\}$ is the {\bf kernel of $\phi$}, denoted by $Ker(\phi)$. \\
+
+\noindent \underline{\bf 13.15 Theorem} Let $\phi : G \rightarrow G'$ be a group homomorphism, and let $H = Ker(\phi)$. Let $a \in G$. Then the set $$\phi^{-1}[\{\phi(a)\}] = \{x \in G \; | \; \phi(x) = \phi(a)\}$$ is the left coset $aH$ of $H$, and is also the right coset $Ha$ of $H$. Consequently the two partitions of $G$ into left and right cosets are the same. \\
+
+\noindent \underline{\bf 13.18 Corollary} A group homomorphism $\phi : G \rightarrow G'$ is a one-to-one map iff $Ker(\phi) = {e}$.  \\
+
+\noindent \underline{\bf 13.19 Definition} A subgroup $H$ of a group $G$ is {\bf normal} if $gH = Hg \;\; \forall g \in G$. \\
+
+\noindent \underline{\bf 13.20 Corollary} If $\phi : G \rightarrow G'$ is a group homomorphism, then $Ker(\phi)$ is a normal subgroup of $G$. \\
+
+\noindent \underline{\bf Notable Exercises} \\
+
+3) Let $\phi : \mathbb{R}^* \rightarrow \mathbb{R}^*$ under multiplication be given by $\phi(x) = |x|$. Is $\phi$ a homomorphism? \\
+
+(Answer) : Yes $\phi$ is a homomorphism. Since $|xy| = |x||y|$ for all $x,y \in \mathbb{R}$ (the proof is done by checking cases depending  whether $x$ and $y$ are both positive, both negative, opposite sign, one or both zero), this must also hold for $\mathbb{R}^* \subset \mathbb{R}$. But then, $$\phi(xy) = |xy| = |x||y| = \phi(x)\phi(y) \;.$$
+
+
+11) Let $F$ be the additive group of all functions mapping $\mathbb{R}$ into $\mathbb{R}$, and let $\phi : \mathbb{R} \rightarrow \mathbb{R}$ be given by $\phi(f) = 3f$. Is $\phi$ a homomorphism? \\
+
+(Answer) : Yes $\phi$ is a homomorphism. Since we are considering an additive group, we need to check that for any $f,g \in F$, $\phi(f+g) = \phi(f) + \phi(g)$. This is straightforward, using the given definition of function addition from the first part of the text : $$\phi(f+g) = 3(f+g) = 3f + 3g = \phi(f) + \phi(g) \;.$$ \\
+
+15) Let $F$ be the multiplicative group of all continuous functions mapping $\mathbb{R}$ into $\mathbb{R}$ that are nonzero at every $x \in \mathbb{R}$. Let $\mathbb{R}^*$ be the multiplicative group of nonzero real numbers. Let $\phi : F \rightarrow \mathbb{R}^*$ be given by $\phi(f) = \int_{0}^{1} f(x) \, dx$. Is $\phi$ a homomorphism? \\
+
+(Answer) : No $\phi$ is not a homomorphism. Consider, as one particular counterexample, the following case. Let $f,g : \mathbb{R} \rightarrow \mathbb{R}$ given by : 
+\[ f(x) = \begin{cases}
+      1 & x\leq \frac{1}{2} \\
+      -1 & x\geq \frac{1}{2}
+   \end{cases}
+\]
+\[ g(x) = \begin{cases}
+      -1 & x\leq \frac{1}{2} \\
+      1 & x\geq \frac{1}{2}
+   \end{cases}
+\]
+
+Then $f,g \in F$ (since they map the reals to the reals and are nonzero everywhere), but $\phi(fg) = \int_0^1 f(x)g(x) \, dx = \int_0^1 -1 \, dx = -1$ while $\phi(f)\phi(g) = \in_0^1 f(x) \, dx \int_0^1 g(x) \, dx = 0 \cdot 0 = 0 \neq \phi(fg)$.  \\
+
+17) Find $Ker(\phi)$ and $\phi(25)$ for $\phi : \mathbb{Z} \rightarrow \mathbb{Z}_7$, assuming that $\phi$ is a homomorphism and given that $\phi(1) = 4$. \\
+
+(Answer) : We know that for $n \in \mathbb{Z}$, $n \in Ker(\phi)$ if $\phi(n) \in 7\mathbb{Z}$. We can quickly compute $\langle 4 \rangle$ in $\mathbb{Z}_7$, while maintaining the order in which we find the cycle, as $\{4, 1, 5, 2, 6, 3, 0\}$. This shows us, using the assumption that $\phi$ is a homomorphism, that $\phi(7) = \phi(1)+\phi(1)+
+\phi(1)+\phi(1)+\phi(1)+\phi(1)+\phi(1) = 0$. But then $\phi(7k) = \phi(7)\phi(k) = 0\phi(k) = 0$ for all $k \in \mathbb{Z}$, so we conclude that $Ker(\phi) = \{...,-14,-7,0,7,14,...\} = 7\mathbb{Z}$. Using this and the homomorphic property of $\phi$, $\phi(25) = \phi(3\cdot7) + \phi(4) = 0 + 4\phi(1) = 4 \cdot 4 = 2$. \\
+
+21) Find $Ker(\phi)$ and $\phi(14)$ for $\phi : \mathbb{Z}_{24} \rightarrow S_8$, assuming that $\phi$ is a homomorphism and given that $\phi(1) = (2,5)(1,4,6,7)$. \\
+
+(Answer) :  Recall that disjoint permutation cycles commute and let $i$ denote the identity permutation. 
+\begin{align*}
+\phi(2) &= (2,5)(1,4,6,7)(2,5)(1,4,6,7) = (1,4,6,7)(1,4,6,7) = (1,6)(4,7) \\
+\phi(3) &=(2,5)(1,4,5,7)(1,6)(4,7) = (1,7,6,4)(2,5) \\
+\phi(4) &= (2,5)(1,4,6,7)(1,7,6,4)(2,5) = i \;.
+\end{align*}
+This shows that than $\phi(k) = i$ for multiples of $4$. Since we are working in $\mathbb{Z}_{24}$, we have $Ker(\phi) = \{0,4,8,12,16,20\}$. Using this can also find $\phi(14) = \phi(12)\phi(2) = i(1,6)(4,7) = (1,6)(4,7)\;.$ \\
+
+29) Let $G$ be a group and let $g \in G$. Let $\phi_g : G \rightarrow G$ be defined by $\phi_g(x) = gxg^{-1}$. For which $g \in G$ is $\phi_g$ a homomorphism. \\
+
+(Answer) : $\phi_g$ is a homomorphism for all $g \in G$. To see why, note that $\phi$ is a map between groups (this is required by the definition but sometimes we forget to check this, also it is fine that the domain and codomain are the same group) and for any $a,b \in G$, $\phi(ab) = xabx^{-1} = xaebx^{-1} = (xax^{-1})(xbx^{-1}) = \phi(a)\phi(b)$, where $e$ is the identity element and we used the associativity of the group $G$. \\
+
+\subsection{Factor Groups} 
+
+\noindent \underline{\bf 14.1 Theorem} Let $\phi : G \rightarrow G'$ be a group homomorphism with kernel $H$. Then the cosets of $H$ form a {\bf factor group}, $G / H$ (the set of all cosets of $H$ in $G$), where $(aH)(bH) = (ab)H$. Also the map $\mu : G/H \rightarrow \phi[G]$ defined by $\mu(aH) = \phi(a)$ is an isomorphism. Both coset multiplication and $\mu$ are well defined, independent of the choices of $a$ and $b$ from the cosets. \\
+
+\noindent \underline{\bf 14.4 Theorem} Let $H$ be a subgroup of $G$. Then left coset multiplication is well defined by the operation $$(aH)(bH) = (ab)H$$ if and only if $H$ is a normal subgroup of $G$. \\
+
+\noindent \underline{\bf 14.5 Corollary} Let $H$ be a normal subgroup of $G$. Then the cosets of $H$ form a group $G/H$ under the binary operation $(aH)(bH) = (ab)H$. \\
+
+\noindent \underline{\bf 14.6 Definition} The group $G/H$ in the preceding corollary is the {\bf factor group} (or {\bf quotient group}) of $G$ by $H$. \\
+
+\noindent \underline{\bf 14.9 Theorem} Let $H$ be a normal subgroup of $G$. Then $\gamma : G \rightarrow G/H$ given by $\gamma(x) = xH$ is a homomorphism with kernel $H$. \\
+
+\noindent \underline{\bf 14.11 Theorem} {\bf (Fundamental Homomorphism Theorem)}  Let $\phi : G \rightarrow G'$ be a group homomorphism with kernel $H$. Then $\phi[G]$ is a group, and $\mu : G/H \rightarrow \phi[G]$ given by $\mu (gH) = \phi(g)$ is an isomorphism. If $\gamma : G \rightarrow G/H$ is the homomorphism given by $\gamma(g) = gH$, then $\phi(g) = \mu \gamma (g) $ for each $g \in G$. \\
+
+\noindent \underline{\bf 14.13 Theorem} The following are three equivalent conditions of a subgroup $H$ of $G$ to be a normal subgroup of $G$. \\
+
+1. $ghg^{-1} \in H$ for all $g \in G$ and for all $h \in H$. \\
+\indent 2. $gHg^{-1} = H$ for all $g \in G$. \\
+\indent 3. $gH = Hg$ for all $g \in G$. \\
+
+\noindent \underline{\bf  14.15 Definition} An isomorphism $\phi : G \rightarrow G$ of a group $G$ with itself is an {\bf automorphism} of $G$. The automorphism $i_g : G \rightarrow G$, where $i_g(x) = gxg^{-1}$, is the {\bf inner automorphism of $G$ by $g$}. Performing $i_g$ on $x$ is called {\bf conjugation of $x$ by $g$}. \\
+
+\noindent \underline{\bf Notable Exercises} \\
+
+1). Find the order of the factor group $\mathbb{Z}_6 / \langle 3 \rangle$. \\
+
+(Answer) : The order of the factor group is the number of sets in the set of cosets (left and right cosets are the same for a normal subgroup) of $\langle 3 \rangle$ in $\mathbb{Z}_6$. \\
+
+\begin{align*}
+\langle 3 \rangle &= \{0,3\} \\
+1 + \langle 3 \rangle &= \{1,4\} \\
+2 + \langle 3 \rangle &= \{2,5\} \\
+3 + \langle 3 \rangle &= \{3,0\} = \langle 3 \rangle \\
+4 + \langle 3 \rangle &= 1 + \langle 3 \rangle \\
+5 + \langle 3 \rangle &= 2 + \langle 3 \rangle
+\end{align*}
+
+So $\mathbb{Z}_6 / \langle 3 \rangle = \{\{0,3\},\{1,4\}, \{2,5\}\}$ has 3 elements - is of order 3. Another way to see this, without finding the set explicitly, is to note that $\mathbb{Z}_6$ has 6 elements and $\langle 3 \rangle$ has 2 elements. Since all cosets of $\langle 3 \rangle$ must also have 2 elements, and since the cosets must be disjoint, we must have 6/2 = 3 cosets of $\langle 3 \rangle$ in $\mathbb{Z}_6$. \\
+
+7) Find the order of the factor group $(\mathbb{Z}_2 \times S_3) / \langle (1,\rho_1) \rangle$. \\
+
+(Answer) : There are $2 \cdot 6 = 12$ elements in $\mathbb{Z}_2 \times S_3$, and so manually finding all cosets could get quite tedious. We employ the reasoning mentioned above to find that the order of the factor group will be $\frac{|\mathbb{Z}_2 \times S_3 |}{|\langle (1,\rho_1) \rangle|}$. 
+$$ \langle (1,\rho_1) \rangle = \{(1,\rho_1), (0,\rho_2), (1,\rho_0), (0,\rho_1), (1,\rho_2), (0,\rho_0)\}\;.$$
+
+From this we can conclude that the order of the factor group is $\frac{12}{6} = 2$, meaning that there if we were to go through with finding all cosets of $\langle (1,\rho_1) \rangle$, we would find that there would only be the identity coset given above and only one other coset distinct from the given coset. \\
+
+9) Give the order of the element $5 + \langle 4 \rangle$ in $\mathbb{Z}_4 / \langle 4 \rangle$. \\
+
+(Answer) : What we need to find is $|\langle 5 + \langle 4\rangle \rangle |$ since the order of an element $a$ in group $G$ is the smallest positive integer $m$ such that $a^m = e$ (the identity element of $\mathbb{Z}_4 / \langle 4 \rangle$ is $0 + \langle 4 \rangle = \langle 4 \rangle$ since the identity of the group of cosets of $H$ in group $G$ is just $eH = H$). Also note that $\langle 4 \rangle = \{0,4,8\}$. Recall that for $H \leq G$, and $a,b \in G$, we have $(aH)(bH) = (ab)H$. This means that for a cycle we will have $(aH)^n = a^nH$. Here we have an additive group so $(5 + \langle 4 \rangle)^n = 5n + \langle 4 \rangle$. $$|\langle 5 + \langle 4 \rangle \rangle | = |\{\{5,9,1\}, \{10,6,2\}, \{3,11,7\}, \{8,4,0\}\} | = 4\;.$$ (Note that $5+ \{8,4,0\} = \{1,9,5\}$, confirming that we are done once the identity element has been reached). \\
+
+23) Mark the following statements as true or false. \\
+
+(Answers) : \\
+
+a. It makes sense to speak of the factor group $G / N$ if and only if $N$ is a normal subgroup of the group $G$. -- True. In definition 14.6, the factor group $G/H$ referred to corollary 14.5, in which we assumed $H$ is a normal subgroup of $G$. \\
+
+c. An inner automorphism of an abelian group must be just the identity map. -- True. If $i_g : G \rightarrow G$, $i_g(x) = gxg^{-1}$ is an inner automorphism of the group $G$ by $g \in G$, and $G$ is an abelian group, then we see that $i_g(x) = gxg^{-1} = gg^{-1}x  = x$. \\
+
+\noindent \underline{\bf Definition} A {\bf torsion group} is a group all of whose elements have finite order. \\
+
+e. Every factor group of a torsion group is a torsion group. -- True. Let $G$ be a torsion group and consider the factor group $G / H$, where the subgroup $H$ of $G$ is normal in $G$. The elements of this factor group are the cosets of $H$ in $G$. We consider an arbitrary coset $aH \in G / H$, where $a$ is some element in $G$. Since $a$ is of finite order, there exists some positive integer $m$ such that $a^m = e$, where $e$ is the identity element in $G$. But then $(aH)^m = a^mH = eH = H$ (recall that $H$ is the identity element of the group $G / H$). This shows that $aH$ is of finite order $m$. But since $aH$ was an arbitrary element of the factor group $G / H$, then every element of $G / H$ is of finite order so that $G/H$ is a torsion group by definition. Further, since $G/H$ was an arbitrary factor group of the torsion group $G$, this shows that every factor group of a torsion group is also a torsion group. \\
+
+g. Every factor group of an abelian group is abelian. -- True. Let $G$ be an abelian group and let $H$ be a normal subgroup of $G$. Consider the factor group $G / H$. We need to show that $(aH)(bH) = (bH)(aH)$ for any $aH,bH \in G / H$. But since in taking a coset of $H$ in $G$ we assume, by definition, that $a,b \in G$ and since $G$ is abelian we see that $(aH)(bH) = (ab)H = (ba)H = (bH)(aH)$ as desired. \\
+
+i. $\mathbb{Z} / n\mathbb{Z}$ is cyclic of order $n$. -- True. A quick way to prove this is to note that $\mathbb{Z}_n$ is cyclic of order $n$ and in example 14.2 we saw that $\mathbb{Z} / n\mathbb{Z}$ is isomorphic to $\mathbb{Z}_n$. If these groups did not share this structural property then could not be isomorphic. So $\mathbb{Z} / n\mathbb{Z}$ must be cylic of order $n$. Another way of proving this is to show (with perhaps some rigor) that starting with any coset in $\mathbb{Z} / n\mathbb{Z}$, we can get the whole set of cosets by repeatedly adding 1 (in coset style) until we return the original coset by adding $n$. \\
+
+\subsection{Factor-Group Computations and Simple Groups}
+
+\noindent \underline{\bf 15.8 Theorem} Let $G = H \times K$ be the direct product of groups $H$ and $K$. Then $\bar{H} = \{(h,e) \; | \; h \in H\}$ is a normal subgroup of $G$. Also $G / \bar{H} \simeq K$ and $G / \bar{K} \simeq H$. \\
+
+\noindent \underline{\bf 15.14 Definition} A group is {\bf simple} if it is nontrivial and has no proper nontrivial normal subgroups. \\
+
+\noindent \underline{\bf 15.15 Theorem} The alternating group $A_n$ is simple for $n \geq 5$. \\
+
+\noindent \underline{\bf 15.16 Theorem} Let $\phi : G \rightarrow G'$ be a group homomorphism. If $N$ is a normal subgroup of $G$, then $\phi[N]$ is a normal subgroup of $\phi[G]$. Also, if $N'$ is a normal subgroup of $\phi[G]$, then $\phi^{-1}[N']$ is a normal subgroup of $G$.  \\
+
+\noindent \underline{\bf 15.17 Definition} A {\bf maximal normal subgroup of a group $G$} is a normal subgroup $M$ not equal to $G$ such that there is no proper normal subgroup $N$ of $G$ properly contained in $G$. \\
+
+\noindent \underline{\bf 15.18 Theorem} $M$ is a maximal subgroup of $G$ if and only if $G / M$ is simple. \\
+
+\noindent \underline{\bf Definition} The center $Z(G)$ of a group $G$ is defined as $$Z(G) = \{z \in G \; | \; zg = gz \mbox{ for all } g \in G\}\,.$$
+
+\noindent \underline{\bf Definition} For $a,b \in G$, $aba^{-1}b^{-1}$ is a {\bf commutator of the group} $G$. 
+
+\end{document}
